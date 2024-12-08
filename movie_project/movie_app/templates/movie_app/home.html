@@ -3,6 +3,27 @@
     <title>The movies project</title>
 {% endblock %}
 {% block content %}
-    <h1 class="text-center mt-5">Здесь будет отображаться список фильмов</h1>
+{% if movies %}
+    {% for movie in movies %}
+        <div class="container mt-5">
+        <div class="card mb-3" style="max-width: 800px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="{{ movie.poster.url }}" class="card-img" alt="Изображение фильма">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ movie.name }}</h5>
+                        <p class="card-text"><strong>Дата выхода:</strong> {{ movie.year }}</p>
+                        <p class="card-text"><strong>Краткое описание:</strong> {{ movie.intro }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <h5 class="text-center mt-5">Фильмы в коллекцию пока не добавлялись</h5>
+{% endif %}
 
 {% endblock %}

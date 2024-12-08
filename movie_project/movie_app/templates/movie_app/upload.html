@@ -3,6 +3,29 @@
     <title>The movies project</title>
 {% endblock %}
 {% block content %}
-    <h1 class="text-center mt-5">Здесь будет форма отправки данных</h1>
-
+<h1 class="text-center">Добавить фильм</h1>
+<div class="container">
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.name }}
+            </div>
+            <div class="form-group mt-2">
+                {{ form.year }}
+            </div>
+            <div class="form-group mt-2">
+                {{ form.genre }}
+            </div>
+            <div class="form-group mt-2">
+                {{ form.intro }}
+            </div>
+            <div class="form-gruop mt-2">
+                <input type="file" class="form-control-file" id="poster" name="poster" required>
+            </div>
+            <button type="submit" class="btn btn-outline-warning mt-3">Отправить</button>
+        </form>
+        <h4 class="text-center mt-5">{{ error }}</h4>
+    </div>
+</div>
 {% endblock %}
